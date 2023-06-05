@@ -141,6 +141,19 @@ public:
         ans.reduce();
         ans.print();
     }
+    
+    fraction operator++()
+    {
+        numerator += denominator;
+        return *this;
+    }
+
+    fraction operator++(int)
+    {
+        fraction temp = *this;
+        numerator += denominator;
+        return temp;
+    }    
 
     friend void add_int(fraction &obj, int n);
 };
