@@ -57,8 +57,6 @@ public:
 
     void insert(t data, int index)
     {
-        int i = 0;
-        int j = 0;
         if (index > current || index <0)
         {
             cout << "invalid";
@@ -66,6 +64,8 @@ public:
         else if (current == capacity)
         {
             t *temp = new t[2 * capacity];
+            int i = 0;
+            int j = 0;
 
             while (i != current + 1)
             {
@@ -98,6 +98,8 @@ public:
         }
     }
 };
+
+
 
 
 
