@@ -55,20 +55,27 @@ public:
         }
     }
 
-    void insert(t data, int index){
-        int i=0;int j =0;
-        if (index>current){
-            cout<<"invalid";
+    void insert(t data, int index)
+    {
+        int i = 0;
+        int j = 0;
+        if (index > current || index <0)
+        {
+            cout << "invalid";
         }
-        else if (current==capacity){
-            t * temp = new t[2*capacity];
-            
-            while(i != current+1){
-                if(i == index){
-                    temp[i]=data;
+        else if (current == capacity)
+        {
+            t *temp = new t[2 * capacity];
+
+            while (i != current + 1)
+            {
+                if (i == index)
+                {
+                    temp[i] = data;
                     i++;
                 }
-                else{
+                else
+                {
                     temp[i] = arr[j];
                     i++;
                     j++;
@@ -76,30 +83,21 @@ public:
             }
             delete[] arr;
             arr = temp;
-            current ++;
+            current++;
+        }
+        else
+        {
+            for (int i = current; i >= index; i--)
+            {
+                t temp = arr[i];
+                arr[i + 1] = temp;
+            }
+            arr[index] = data;
+            current++;
 
         }
-        else{
-            t * temp = new t[capacity];
-           
-            while(i != capacity+1){
-                if(i == index){
-                    temp[i]=data;
-                    i++;
-                }
-                else{
-                    temp[i] = arr[j];
-                    i++;
-                    j++;
-                }
-            }
-            
-            delete[] arr;
-            arr = temp;
-            
-            current ++;
-        }
-        
     }
 };
+
+
 
