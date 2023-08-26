@@ -54,6 +54,54 @@ public:
             size++;
     }
 
+    void insert_(t data,int index){
+        if (index >size|| index<0){
+            cout<<"out of bound"<<endl;
+        }
+        else if (index ==0){
+            push_front(data);
+        }
+        else if (index == size){
+            push_back(data);
+        }
+        else{
+            node<t> *newNode = new node(data);
+            node<t> * temp = head;
+            for (int i =1;i<index;i++){
+                temp= temp->next;
+            }
+            newNode->next = temp->next;
+            temp->next = newNode;
+            size++;
+
+        }
+        
+    }
+
+    void delete_(int index){
+        if (index >= size|| index < 0){
+            cout<<"index out of bound"<<endl;
+        }
+        else if (index ==0){
+            delete_front();
+        }
+        else if (index == size-1){
+            delete_back();
+        }
+        else{
+            node<t>* temp = head;
+            node<t> * temp2;
+            for (int i= 0;i<index-1;i++){
+                temp = temp->next;
+            }
+            temp2 = temp->next;
+            temp->next= temp->next->next;
+            delete temp2;
+            
+        }
+    }
+
+
     void delete_back(){
         if(head==tail){
             delete head;
@@ -118,7 +166,6 @@ public:
         }
     }
 };
-
 
 
 
